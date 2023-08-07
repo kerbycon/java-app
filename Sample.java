@@ -5,25 +5,19 @@ import java.util.stream.Stream;
 import java.io.IOException;
 
 public class Sample {
-    public static void main(String[] args) {
+    public static void main(final String[] args) throws IOException {
         if (args.length == 0) {
-            System.out.println("Enter the name of the file");
-            return;
+            throw new IOException("Enter the name of the file");
         }
 
         if (args.length > 1) {
-            System.out.println("You must enter only the one file name");
-            return;
+            throw new IOException("You must enter only the one file name");
         }
 
-        String fileNameInput = args[0];
-        String currentDirectory = Paths.get("").toAbsolutePath().toString();
-        String stringPathToFile = currentDirectory + "/" + fileNameInput;
-        Path pathToFile = Paths.get(stringPathToFile);
+        final Path pathToFile = Paths.get(Paths.get("").toAbsolutePath().toString() + "/" + args[0]);
 
         if (!Files.exists(pathToFile)) {
-            System.out.println("File with provided name does not exist, try another one");
-            return;
+            throw new IOException("File with provided name does not exist, try another one");
         }
 
         long numberOfLines;
@@ -35,18 +29,15 @@ public class Sample {
         }
 
         if (numberOfLines == 0) {
-            System.out.println("File with name " + fileNameInput + " does not have lines.");
+            System.out.println("File with name " + args[0] + " does not have lines.");
             return;
         }
 
         if (numberOfLines == 1) {
-            System.out.println("File with name " + fileNameInput + " has one line.");
+            System.out.println("File with name " + args[0] + " has one line.");
             return;
         }
 
-        if (numberOfLines > 1) {
-            System.out.println("File with name " + fileNameInput + " has " + numberOfLines + " number of lines");
-            return;
-        }
+        System.out.println("File with name " + args[0] + " has " + numberOfLines + " lines");
     }
 }
