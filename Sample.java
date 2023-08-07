@@ -41,3 +41,4 @@ public class Sample {
         System.out.println("File with name " + args[0] + " has " + numberOfLines + " lines");
     }
 }
+
