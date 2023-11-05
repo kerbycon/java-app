@@ -3,6 +3,7 @@ package com.example.demo.util;
 import java.util.Random;
 
 public class DigitGenerator {
+
     public static String generateSixDigitString() {
         Random random = new Random();
         StringBuilder stringBuilder = new StringBuilder();

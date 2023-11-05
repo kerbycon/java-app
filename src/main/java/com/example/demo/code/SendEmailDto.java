@@ -1,8 +1,11 @@
 package com.example.demo.code;
 
 public class SendEmailDto {
+
     private String to;
+
     private String subject;
+
     private String text;
 
     public SendEmailDto(String to, String subject, String text) {

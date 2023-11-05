@@ -11,6 +11,7 @@ import java.util.Optional;
 
 @Repository
 public interface CodeRepository extends JpaRepository<Code, Integer> {
+
     @Query("SELECT c FROM Code c WHERE c.user.id = ?1")
     Optional<Code> findCodeByUserId(Integer userId);
 

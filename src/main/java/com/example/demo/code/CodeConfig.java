@@ -10,18 +10,22 @@ import java.util.Properties;
 
 @Configuration
 public class CodeConfig {
-    @Value("")
+
+    @Value("${spring.mail.host}")
     private String mailHost;
-    @Value("")
+
+    @Value("${spring.mail.port}")
     private String mailPort;
+
     @Value("${spring.mail.username}")
     private String mailUsername;
-    @Value("")
+
+    @Value("${spring.mail.password}")
     private String mailPassword;
 
     @Bean
     public JavaMailSender getJavaMailSender() {
-        JavaMailSenderImpl javaMailSender = new JavaMailSenderImpl();
+        final var javaMailSender = new JavaMailSenderImpl();
 
         javaMailSender.setHost(mailHost);
         javaMailSender.setPort(Integer.parseInt(mailPort));

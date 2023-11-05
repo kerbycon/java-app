@@ -1,6 +1,7 @@
 package com.example.demo.user;
 
 public class EmailConfirmDto {
+
     private String email;
 
     private String code;
