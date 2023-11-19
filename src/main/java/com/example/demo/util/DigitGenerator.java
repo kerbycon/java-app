@@ -4,8 +4,9 @@ import java.util.Random;
 
 public class DigitGenerator {
 
+    private static final Random random = new Random();
+
     public static String generateSixDigitString() {
-        Random random = new Random();
         StringBuilder stringBuilder = new StringBuilder();
 
         for (int i = 0; i < 6; i++) {

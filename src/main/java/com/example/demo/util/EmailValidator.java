@@ -8,11 +8,7 @@ public class EmailValidator {
     private static final String EMAIL_REGEX = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$";
 
     public static boolean isPresentedEmail(String email) {
-        if (email == null || email.isEmpty()) {
-            return false;
-        }
-
-        return true;
+        return email != null && !email.isEmpty();
     }
 
     public static boolean isValidEmail(String email) {
