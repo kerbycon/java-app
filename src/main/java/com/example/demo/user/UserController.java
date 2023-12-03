@@ -5,6 +5,7 @@ import com.example.demo.util.EmailValidator;
 import com.example.demo.util.PasswordValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,7 +25,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping("/register")
+    @PostMapping(path="/register", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity createUser(@RequestBody User user) {
         if (!EmailValidator.isPresentedEmail(user.getEmail())) {
             return new ResponseEntity<>("Email is required", HttpStatus.BAD_REQUEST);
@@ -52,7 +53,7 @@ public class UserController {
         return new ResponseEntity(HttpStatus.OK);
     }
 
-    @PostMapping("/email-confirm")
+    @PostMapping(path="/email-confirm", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity emailConfirm(@RequestBody EmailConfirmDto emailConfirmDto) {
         if (!EmailValidator.isPresentedEmail(emailConfirmDto.getEmail())) {
             return new ResponseEntity<>("Email is required", HttpStatus.BAD_REQUEST);
